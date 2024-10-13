@@ -1,10 +1,17 @@
-http://localhost:8080/api/v1/category/save-category
+Post saveCategory
+http://localhost:8080/api/v1/category/save
 {
     "name": "Electronics",
     "description": "Devices and gadgets",
     "isActive": true
 }
+Get getAllCategory
+http://localhost:8080/api/v1/category/
 
-http://localhost:8080/api/v1/category/category
+Get Active Category
+http://localhost:8080/api/v1/category/active
 
-http://localhost:8080/api/v1/category/active-category
+Get By CategoryId
+http://localhost:8080/api/v1/category/1
+Delete By CategoryId
+http://localhost:8080/api/v1/category/1
