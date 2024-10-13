@@ -2,6 +2,7 @@ package com.praveen.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,10 +55,35 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	public List<CategoryResponse> getActiveCategory() {
-		List<Category> categories = categoryRepo.findByIsActiveTrue();
+		List<Category> categories = categoryRepo.findByIsActiveTrueAndIsDeletedFalse();
 		List<CategoryResponse> categoryList = categories.stream().map(cat -> mapper.map(cat, CategoryResponse.class))
 				.toList();
 		return categoryList;
+	}
+	
+	@Override
+	public CategoryDto getCategoryById(Integer id) {
+
+		Optional<Category> findByCatgeory = categoryRepo.findByIdAndIsDeletedFalse(id);
+
+		if (findByCatgeory.isPresent()) {
+			Category category = findByCatgeory.get();
+			return mapper.map(category, CategoryDto.class);
+		}
+		return null;
+	}
+
+	@Override
+	public Boolean deleteCategory(Integer id) {
+		Optional<Category> findByCatgeory = categoryRepo.findById(id);
+
+		if (findByCatgeory.isPresent()) {
+			Category category = findByCatgeory.get();
+			category.setIsDeleted(true);
+			categoryRepo.save(category);
+			return true;
+		}
+		return false;
 	}
 
 }
