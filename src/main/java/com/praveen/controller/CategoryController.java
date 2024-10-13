@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.praveen.dto.CategoryDto;
 import com.praveen.dto.CategoryResponse;
-import com.praveen.entity.Category;
 import com.praveen.service.CategoryService;
 @RestController
 @RequestMapping("/api/v1/category")

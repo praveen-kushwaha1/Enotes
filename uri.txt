@@ -5,6 +5,14 @@ http://localhost:8080/api/v1/category/save
     "description": "Devices and gadgets",
     "isActive": true
 }
+ Post Update saveCategory
+http://localhost:8080/api/v1/category/save
+{
+    "id": 2,
+    "name": "py",
+    "description": "Programming language py",
+    "isActive": true
+}
 Get getAllCategory
 http://localhost:8080/api/v1/category/
 
