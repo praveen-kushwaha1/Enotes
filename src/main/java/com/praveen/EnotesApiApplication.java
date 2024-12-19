@@ -8,6 +8,7 @@ public class EnotesApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EnotesApiApplication.class, args);
+		System.out.println("App is Running");
 	}
 
 }
